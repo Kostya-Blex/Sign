@@ -1,0 +1,11 @@
+.window {
+    position: absolute;
+    height: 80%;
+    width: 30%;
+    left: 60%;
+    top: 8%;
+
+
+    background: rgba(255, 255, 255, 0.75);
+    border-radius: 40px;
+}

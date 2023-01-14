@@ -1,0 +1,13 @@
+.App {
+    background-image: url(./images/background.png);
+    height: 100vh;
+    margin: 0;
+    background-repeat: no-repeat;
+    background-size: 1920px 1080px;
+}
+
+@media (max-width: 1600px) {
+    .App {
+        background-size: cover;
+    }
+}

@@ -1,0 +1,15 @@
+.head {
+    padding: 50px;
+}
+
+.welcome {
+    font-family: 'Poppins';
+    font-size: 22px;
+    font-weight: 400;
+}
+
+.green {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    color: #779341;
+}
