@@ -3,10 +3,10 @@ import { Header } from "../Header/Header";
 
 import style from "./Window.module.css";
 
-export const Window = () => {
+export const Window = ({ type }) => {
   return (
     <div className={style.window}>
-      <Header />
+      <Header type={type} />
     </div>
   );
 };

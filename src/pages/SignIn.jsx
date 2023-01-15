@@ -6,7 +6,7 @@ import style from "./Page.module.css";
 export const SignIn = () => {
   return (
     <div className={style.pageWindow}>
-      <Window />
+      <Window type="in" />
     </div>
   );
 };
