@@ -1,7 +1,5 @@
 .head {
-    padding: 50px;
     width: auto;
-
     display: flex;
     justify-content: space-between;
 }

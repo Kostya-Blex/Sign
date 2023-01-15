@@ -1,0 +1,46 @@
+.container {
+    margin-top: 43px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.buttonWide {
+    width: 300px;
+    height: 55px;
+    background: #E9F1FF;
+    border-radius: 9px;
+    border: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-right: 30px;
+
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    color: #4285F4;
+}
+
+.button {
+    width: 60px;
+    height: 55px;
+    background: #FFFFFF;
+    border-radius: 9px;
+    border: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.icon {
+    height: 26px;
+    width: 26px;
+    padding-right: 20px;
+}
+
+.iconSmall {
+    height: 26px;
+    width: 26px;
+}

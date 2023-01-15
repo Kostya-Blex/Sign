@@ -9,6 +9,7 @@ export const SignIn = () => {
     <div className={style.pageWindow}>
       <div className={style.window}>
         <Header type="in" />
+        <ButtonContainer />
       </div>
     </div>
   );
