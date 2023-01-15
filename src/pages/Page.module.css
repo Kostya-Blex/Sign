@@ -3,3 +3,16 @@
     justify-content: flex-end;
     height: 93vh;
 }
+
+.window {
+    display: flex;
+    flex-direction: column;
+    height: 80%;
+    width: 539px;
+    margin-top: 20px;
+    margin-right: 100px;
+
+
+    background: rgba(255, 255, 255, 0.75);
+    border-radius: 40px;
+}

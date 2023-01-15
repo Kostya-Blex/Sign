@@ -1,12 +1,15 @@
 import React from "react";
 
-import { Window } from "../components/Window/Window";
+import { ButtonContainer } from "../components/ButtonContainer/ButtonContainer";
+import { Header } from "../components/Header/Header";
 import style from "./Page.module.css";
 
 export const SignIn = () => {
   return (
     <div className={style.pageWindow}>
-      <Window type="in" />
+      <div className={style.window}>
+        <Header type="in" />
+      </div>
     </div>
   );
 };
