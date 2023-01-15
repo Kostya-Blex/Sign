@@ -1,9 +1,9 @@
 .window {
-    position: absolute;
+    display: flex;
     height: 80%;
     width: 30%;
-    left: 60%;
-    top: 8%;
+    margin-top: 20px;
+    margin-right: 100px;
 
 
     background: rgba(255, 255, 255, 0.75);

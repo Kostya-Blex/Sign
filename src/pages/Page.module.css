@@ -1,0 +1,5 @@
+.pageWindow {
+    display: flex;
+    justify-content: end;
+    height: 93vh;
+}
