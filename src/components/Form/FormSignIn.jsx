@@ -1,5 +1,7 @@
 import React from "react";
+
 import { useForm } from "react-hook-form";
+import style from "./FormSign.module.css";
 
 export const FormSignIn = () => {
   const {
@@ -10,53 +12,59 @@ export const FormSignIn = () => {
     mode: "onBlur",
   });
 
-  const onSubmit = () => {
-    alert("Вы успешно зашли");
+  const onSubmit = (data) => {
+    alert(`${data.username}, welcome!`);
   };
 
   return (
-    <div>
+    <div style={{ marginTop: "50px" }}>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <label>
+        <label className={style.inputLabel}>
           Enter your username or email address
           <input
+            className={style.inputText}
             {...register("username", {
-              required: "Поле обязательно к заполнению",
+              required: "Must be filled",
               minLength: {
                 value: 6,
-                message: "Минимум 6 символов",
+                message: "At least 6 characters",
               },
               maxLength: {
                 value: 25,
-                message: "Максимум 25 символов",
+                message: "No more than 25 characters",
               },
             })}
             placeholder="Username or email address"
           />
         </label>
-        <div style={{ height: 40 }}>{errors?.username && <p>{errors?.username?.message || "Error!"}</p>}</div>
+        <div className={style.inputError}>{errors?.username && <span>{errors?.username?.message || "Error!"}</span>}</div>
 
-        <label>
+        <label className={style.inputLabel}>
           Enter your Password
           <input
+            className={style.inputText}
             {...register("password", {
-              required: "Поле обязательно к заполнению",
+              required: "Must be filled",
               minLength: {
                 value: 6,
-                message: "Минимум 6 символов",
+                message: "At least 6 characters",
               },
               maxLength: {
                 value: 20,
-                message: "Максимум 20 символов",
+                message: "No more than 20 characters",
               },
             })}
             type="password"
             placeholder="Password"
           />
         </label>
-        <div style={{ height: 40 }}>{errors?.password && <p>{errors?.password?.message || "Error!"}</p>}</div>
-        <div>Forgot Password</div>
-        <input type="submit" disabled={!isValid} value="Sign in" />
+        <div className={style.errorContainer}>
+          <div className={style.inputError} style={{ height: 40 }}>
+            {errors?.password && <p>{errors?.password?.message || "Error!"}</p>}
+          </div>
+          <span className={style.forgot}>Forgot Password</span>
+        </div>
+        <input className={style.signButton} type="submit" disabled={!isValid} value="Sign in" />
       </form>
     </div>
   );

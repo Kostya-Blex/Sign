@@ -20,6 +20,7 @@
     font-weight: 400;
     font-size: 16px;
     color: #4285F4;
+    cursor: pointer;
 }
 
 .button {
@@ -31,7 +32,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-
+    cursor: pointer;
 }
 
 .icon {
