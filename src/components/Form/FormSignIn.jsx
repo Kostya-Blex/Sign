@@ -37,7 +37,10 @@ export const FormSignIn = () => {
             placeholder="Username or email address"
           />
         </label>
-        <div className={style.inputError}>{errors?.username && <span>{errors?.username?.message || "Error!"}</span>}</div>
+
+        <div className={style.inputError}>
+          {errors?.username && <span className={style.inputErrorText}>{errors?.username?.message || "Error!"}</span>}
+        </div>
 
         <label className={style.inputLabel}>
           Enter your Password
@@ -60,7 +63,7 @@ export const FormSignIn = () => {
         </label>
         <div className={style.errorContainer}>
           <div className={style.inputError} style={{ height: 40 }}>
-            {errors?.password && <p>{errors?.password?.message || "Error!"}</p>}
+            {errors?.password && <span className={style.inputErrorText}>{errors?.password?.message || "Error!"}</span>}
           </div>
           <span className={style.forgot}>Forgot Password</span>
         </div>
