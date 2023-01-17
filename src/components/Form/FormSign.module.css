@@ -32,7 +32,7 @@
 }
 
 .inputError {
-    height: 60px;
+    height: 40px;
     display: flex;
     align-items: center;
 
@@ -42,7 +42,16 @@
 }
 
 .inputErrorText {
-    height: 40px;
+    height: 20px;
+}
+
+.inputContainer {
+    display: flex;
+    justify-content: space-between;
+}
+
+.inputItemContainer {
+    width: 80%;
 }
 
 .errorContainer {

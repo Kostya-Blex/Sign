@@ -62,7 +62,7 @@ export const FormSignIn = () => {
           />
         </label>
         <div className={style.errorContainer}>
-          <div className={style.inputError} style={{ height: 40 }}>
+          <div className={style.inputError}>
             {errors?.password && <span className={style.inputErrorText}>{errors?.password?.message || "Error!"}</span>}
           </div>
           <span className={style.forgot}>Forgot Password</span>
