@@ -1,3 +1,11 @@
+.background {
+    background-image: url(../images/background.png);
+    height: 100vh;
+    margin: 0;
+    background-repeat: no-repeat;
+    background-size: 1920px 1080px;
+}
+
 .pageWindow {
     display: flex;
     justify-content: flex-end;
@@ -16,4 +24,11 @@
 
     background: rgba(255, 255, 255, 0.75);
     border-radius: 40px;
+}
+
+
+@media (max-width: 1600px) {
+    .background {
+        background-size: cover;
+    }
 }
