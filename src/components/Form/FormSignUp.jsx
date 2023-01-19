@@ -1,6 +1,7 @@
 import React from "react";
 
 import { useForm } from "react-hook-form";
+import { FormInput } from "./FormInput/FormInput";
 import style from "./FormSign.module.css";
 
 export const FormSignUp = () => {
@@ -13,16 +14,17 @@ export const FormSignUp = () => {
   });
 
   const onSubmit = (data) => {
-    alert(`${data.name}, your register is successfull!`);
+    alert(`${data.name}, your register was successfull!`);
   };
   return (
     <div style={{ marginTop: "50px" }}>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <label className={style.inputLabel}>
-          Enter your username or email address
-          <input
-            className={style.inputText}
-            {...register("username", {
+        <FormInput
+          label="Enter your username or email address"
+          placeholder="Username or email address"
+          error={errors?.username}
+          register={{
+            ...register("username", {
               required: "Must be filled",
               minLength: {
                 value: 6,
@@ -32,23 +34,19 @@ export const FormSignUp = () => {
                 value: 25,
                 message: "No more than 25 characters",
               },
-            })}
-            placeholder="Username or email address"
-          />
-        </label>
-
-        <div className={style.inputError}>
-          {errors?.username && <span className={style.inputErrorText}>{errors?.username?.message || "Error!"}</span>}
-        </div>
+            }),
+          }}
+        />
 
         <div className={style.inputContainer}>
           <div className={style.inputItemContainer}>
-            <label className={style.inputLabel}>
-              User name
-              <input
-                className={style.inputText}
-                style={{ width: "80%" }}
-                {...register("name", {
+            <FormInput
+              label="User name"
+              placeholder="User name"
+              error={errors?.name}
+              style={{ width: "80%" }}
+              register={{
+                ...register("name", {
                   required: "Must be filled",
                   minLength: {
                     value: 6,
@@ -58,21 +56,17 @@ export const FormSignUp = () => {
                     value: 25,
                     message: "No more than 25 characters",
                   },
-                })}
-                placeholder="User name"
-              />
-            </label>
-
-            <div className={style.inputError}>
-              {errors?.name && <span className={style.inputErrorText}>{errors?.name?.message || "Error!"}</span>}
-            </div>
+                }),
+              }}
+            />
           </div>
           <div className={style.inputItemContainer}>
-            <label className={style.inputLabel}>
-              Contact number
-              <input
-                className={style.inputText}
-                {...register("number", {
+            <FormInput
+              label="Contact number"
+              placeholder="Contact number"
+              error={errors?.number}
+              register={{
+                ...register("number", {
                   required: "Must be filled",
                   minLength: {
                     value: 6,
@@ -82,21 +76,17 @@ export const FormSignUp = () => {
                     value: 25,
                     message: "No more than 25 characters",
                   },
-                })}
-                placeholder="Contact number"
-              />
-            </label>
-
-            <div className={style.inputError}>
-              {errors?.number && <span className={style.inputErrorText}>{errors?.number?.message || "Error!"}</span>}
-            </div>
+                }),
+              }}
+            />
           </div>
         </div>
-        <label className={style.inputLabel}>
-          Enter your Password
-          <input
-            className={style.inputText}
-            {...register("password", {
+
+        <FormInput
+          label="Enter your Password"
+          error={errors?.password}
+          register={{
+            ...register("password", {
               required: "Must be filled",
               minLength: {
                 value: 6,
@@ -106,16 +96,11 @@ export const FormSignUp = () => {
                 value: 20,
                 message: "No more than 20 characters",
               },
-            })}
-            type="password"
-            placeholder="Password"
-          />
-        </label>
-        <div className={style.errorContainer}>
-          <div className={style.inputError} style={{ height: 40 }}>
-            {errors?.password && <span className={style.inputErrorText}>{errors?.password?.message || "Error!"}</span>}
-          </div>
-        </div>
+            }),
+          }}
+          placeholder="Password"
+          type="password"
+        />
         <input className={style.signButton} type="submit" disabled={!isValid} value="Sign in" />
       </form>
     </div>

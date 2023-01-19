@@ -66,6 +66,8 @@
     font-size: 13px;
     color: #4285F4;
     padding-bottom: 15px;
+    display: flex;
+    justify-content: flex-end;
 }
 
 .signButton {

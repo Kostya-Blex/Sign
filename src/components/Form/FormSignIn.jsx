@@ -1,6 +1,7 @@
 import React from "react";
 
 import { useForm } from "react-hook-form";
+import { FormInput } from "./FormInput/FormInput";
 import style from "./FormSign.module.css";
 
 export const FormSignIn = () => {
@@ -19,11 +20,12 @@ export const FormSignIn = () => {
   return (
     <div style={{ marginTop: "50px" }}>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <label className={style.inputLabel}>
-          Enter your username or email address
-          <input
-            className={style.inputText}
-            {...register("username", {
+        <FormInput
+          label="Enter your username or email address"
+          placeholder="Username or email address"
+          error={errors?.username}
+          register={{
+            ...register("username", {
               required: "Must be filled",
               minLength: {
                 value: 6,
@@ -33,20 +35,15 @@ export const FormSignIn = () => {
                 value: 25,
                 message: "No more than 25 characters",
               },
-            })}
-            placeholder="Username or email address"
-          />
-        </label>
+            }),
+          }}
+        />
 
-        <div className={style.inputError}>
-          {errors?.username && <span className={style.inputErrorText}>{errors?.username?.message || "Error!"}</span>}
-        </div>
-
-        <label className={style.inputLabel}>
-          Enter your Password
-          <input
-            className={style.inputText}
-            {...register("password", {
+        <FormInput
+          label="Enter your Password"
+          error={errors?.password}
+          register={{
+            ...register("password", {
               required: "Must be filled",
               minLength: {
                 value: 6,
@@ -56,17 +53,12 @@ export const FormSignIn = () => {
                 value: 20,
                 message: "No more than 20 characters",
               },
-            })}
-            type="password"
-            placeholder="Password"
-          />
-        </label>
-        <div className={style.errorContainer}>
-          <div className={style.inputError}>
-            {errors?.password && <span className={style.inputErrorText}>{errors?.password?.message || "Error!"}</span>}
-          </div>
-          <span className={style.forgot}>Forgot Password</span>
-        </div>
+            }),
+          }}
+          placeholder="Password"
+          type="password"
+        />
+        <span className={style.forgot}>Forgot Password</span>
         <input className={style.signButton} type="submit" disabled={!isValid} value="Sign in" />
       </form>
     </div>
