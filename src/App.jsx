@@ -6,15 +6,13 @@ import { SignUp } from "./pages/SignUp";
 
 function App() {
   return (
-    <div>
-      <BrowserRouter>
-        <Routes>
-          <Route element={<SignIn />} path={"/signin"} exact={true} />
-          <Route element={<SignUp />} path={"/signup"} exact={true} />
-          <Route path="*" element={<Navigate to="/signin" replace />} />
-        </Routes>
-      </BrowserRouter>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route element={<SignIn />} path={"/signin"} exact={true} />
+        <Route element={<SignUp />} path={"/signup"} exact={true} />
+        <Route path="*" element={<Navigate to="/signin" replace />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 

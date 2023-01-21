@@ -39,47 +39,45 @@ export const FormSignUp = () => {
         />
 
         <div className={style.inputContainer}>
-          <div className={style.inputItemContainer}>
-            <FormInput
-              label="User name"
-              placeholder="User name"
-              error={errors?.name}
-              style={{ width: "80%" }}
-              register={{
-                ...register("name", {
-                  required: "Must be filled",
-                  minLength: {
-                    value: 6,
-                    message: "At least 6 characters",
-                  },
-                  maxLength: {
-                    value: 25,
-                    message: "No more than 25 characters",
-                  },
-                }),
-              }}
-            />
-          </div>
-          <div className={style.inputItemContainer}>
-            <FormInput
-              label="Contact number"
-              placeholder="Contact number"
-              error={errors?.number}
-              register={{
-                ...register("number", {
-                  required: "Must be filled",
-                  minLength: {
-                    value: 6,
-                    message: "At least 6 characters",
-                  },
-                  maxLength: {
-                    value: 25,
-                    message: "No more than 25 characters",
-                  },
-                }),
-              }}
-            />
-          </div>
+          <FormInput
+            label="User name"
+            placeholder="User name"
+            style={{ width: "48%" }}
+            error={errors?.name}
+            register={{
+              ...register("name", {
+                required: "Must be filled",
+                minLength: {
+                  value: 6,
+                  message: "At least 6 characters",
+                },
+                maxLength: {
+                  value: 25,
+                  message: "No more than 25 characters",
+                },
+              }),
+            }}
+          />
+
+          <FormInput
+            label="Contact number"
+            placeholder="Contact number"
+            style={{ width: "48%" }}
+            error={errors?.number}
+            register={{
+              ...register("number", {
+                required: "Must be filled",
+                minLength: {
+                  value: 6,
+                  message: "At least 6 characters",
+                },
+                maxLength: {
+                  value: 25,
+                  message: "No more than 25 characters",
+                },
+              }),
+            }}
+          />
         </div>
 
         <FormInput

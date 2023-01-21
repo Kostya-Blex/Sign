@@ -1,0 +1,44 @@
+.inputLabel {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+}
+
+.inputText {
+    width: calc(100% - 28px);
+    height: 57px;
+    margin-top: 13px;
+    padding-left: 25px;
+
+
+    background: #FFFFFF;
+    border: 1px solid #ADADAD;
+    border-radius: 9px;
+
+    font-family: 'Poppins';
+    font-weight: 400;
+    font-size: 14px;
+}
+
+.inputText::placeholder {
+    font-weight: 300;
+}
+
+.inputText:focus {
+    outline: 0;
+    border: 1px solid #4285F4;
+}
+
+.inputError {
+    height: 40px;
+    display: flex;
+    align-items: center;
+
+    font-family: 'Poppins';
+    font-size: 13px;
+    color: crimson;
+}
+
+.inputErrorText {
+    height: 20px;
+}
