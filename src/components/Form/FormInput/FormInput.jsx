@@ -3,7 +3,6 @@ import React from "react";
 import style from "./FormInput.module.css";
 
 export const FormInput = ({ label, error, register, ...inputProps }) => {
-  console.log(error);
   return (
     <label className={style.inputLabel} style={inputProps.style}>
       {label}
