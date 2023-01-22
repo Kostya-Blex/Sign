@@ -1,16 +1,28 @@
 import React from "react";
-
 import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
+
 import { FormInput } from "./FormInput/FormInput";
 import style from "./FormSign.module.css";
 
 export const FormSignUp = () => {
+  const schema = yup
+    .object({
+      username: yup.string().required("This field is required to be filled").min(6, "At least 6 characters").max(25, "No more than 25 characters"),
+      name: yup.string().required("This field is required to be filled").min(6, "At least 6 characters").max(25, "No more than 25 characters"),
+      number: yup.string().required("This field is required to be filled").min(9, "At least 9 characters").max(15, "No more than 15 characters"),
+      password: yup.string().required("This field is required to be filled").min(6, "At least 6 characters").max(20, "No more than 20 characters"),
+    })
+    .required();
+
   const {
     register,
     formState: { errors, isValid },
     handleSubmit,
   } = useForm({
     mode: "onBlur",
+    resolver: yupResolver(schema),
   });
 
   const onSubmit = (data) => {
@@ -24,17 +36,7 @@ export const FormSignUp = () => {
           placeholder="Username or email address"
           error={errors?.username}
           register={{
-            ...register("username", {
-              required: "Must be filled",
-              minLength: {
-                value: 6,
-                message: "At least 6 characters",
-              },
-              maxLength: {
-                value: 25,
-                message: "No more than 25 characters",
-              },
-            }),
+            ...register("username"),
           }}
         />
 
@@ -45,17 +47,7 @@ export const FormSignUp = () => {
             style={{ width: "48%" }}
             error={errors?.name}
             register={{
-              ...register("name", {
-                required: "Must be filled",
-                minLength: {
-                  value: 6,
-                  message: "At least 6 characters",
-                },
-                maxLength: {
-                  value: 25,
-                  message: "No more than 25 characters",
-                },
-              }),
+              ...register("name"),
             }}
           />
 
@@ -65,17 +57,7 @@ export const FormSignUp = () => {
             style={{ width: "48%" }}
             error={errors?.number}
             register={{
-              ...register("number", {
-                required: "Must be filled",
-                minLength: {
-                  value: 6,
-                  message: "At least 6 characters",
-                },
-                maxLength: {
-                  value: 25,
-                  message: "No more than 25 characters",
-                },
-              }),
+              ...register("number"),
             }}
           />
         </div>
@@ -84,17 +66,7 @@ export const FormSignUp = () => {
           label="Enter your Password"
           error={errors?.password}
           register={{
-            ...register("password", {
-              required: "Must be filled",
-              minLength: {
-                value: 6,
-                message: "At least 6 characters",
-              },
-              maxLength: {
-                value: 20,
-                message: "No more than 20 characters",
-              },
-            }),
+            ...register("password"),
           }}
           placeholder="Password"
           type="password"

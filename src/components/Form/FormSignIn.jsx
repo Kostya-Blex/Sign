@@ -1,16 +1,26 @@
 import React from "react";
-
 import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
+
 import { FormInput } from "./FormInput/FormInput";
 import style from "./FormSign.module.css";
 
 export const FormSignIn = () => {
+  const schema = yup
+    .object({
+      username: yup.string().required("This field is required to be filled").min(6, "At least 6 characters").max(25, "No more than 25 characters"),
+      password: yup.string().required("This field is required to be filled").min(6, "At least 6 characters").max(20, "No more than 20 characters"),
+    })
+    .required();
+
   const {
     register,
     formState: { errors, isValid },
     handleSubmit,
   } = useForm({
     mode: "onBlur",
+    resolver: yupResolver(schema),
   });
 
   const onSubmit = (data) => {
@@ -25,17 +35,7 @@ export const FormSignIn = () => {
           placeholder="Username or email address"
           error={errors?.username}
           register={{
-            ...register("username", {
-              required: "Must be filled",
-              minLength: {
-                value: 6,
-                message: "At least 6 characters",
-              },
-              maxLength: {
-                value: 25,
-                message: "No more than 25 characters",
-              },
-            }),
+            ...register("username"),
           }}
         />
 
@@ -43,17 +43,7 @@ export const FormSignIn = () => {
           label="Enter your Password"
           error={errors?.password}
           register={{
-            ...register("password", {
-              required: "Must be filled",
-              minLength: {
-                value: 6,
-                message: "At least 6 characters",
-              },
-              maxLength: {
-                value: 20,
-                message: "No more than 20 characters",
-              },
-            }),
+            ...register("password"),
           }}
           placeholder="Password"
           type="password"
