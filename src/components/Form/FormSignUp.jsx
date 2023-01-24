@@ -3,10 +3,14 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
+import { AuthService } from "../../API.js";
 import { FormInput } from "./FormInput/FormInput";
 import style from "./FormSign.module.css";
 
 export const FormSignUp = () => {
+  const authApi = AuthService.getInstance();
+  console.log(authApi);
+
   const schema = yup
     .object({
       username: yup.string().required("This field is required to be filled").min(6, "At least 6 characters").max(25, "No more than 25 characters"),
@@ -26,7 +30,14 @@ export const FormSignUp = () => {
   });
 
   const onSubmit = (data) => {
-    alert(`${data.name}, your register was successfull!`);
+    authApi.register(data.username, data.name, data.number, data.password).then(
+      () => {
+        alert("register was successfull");
+      },
+      (e) => {
+        alert(e);
+      }
+    );
   };
   return (
     <div style={{ marginTop: "50px" }}>

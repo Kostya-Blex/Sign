@@ -1,4 +1,4 @@
-import jwt from "jsonwebtoken";
+//import jwt from "jsonwebtoken";
 
 const SECRET_KEY = "jwt-secret-key";
 
@@ -33,7 +33,7 @@ export class AuthService {
           password,
           phoneNumber,
           email,
-          token: jwt.sign(email, SECRET_KEY),
+          // token: jwt.sign(email, SECRET_KEY),
         };
         this.users = [...this.users, user];
         console.log({ users: this.users });

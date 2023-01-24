@@ -1,12 +1,18 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
 import { FormInput } from "./FormInput/FormInput";
 import style from "./FormSign.module.css";
+import { TokenContext } from "../../context/context";
+import { AuthService } from "../../API";
 
 export const FormSignIn = () => {
+  const authApi = AuthService.getInstance();
+  console.log(authApi);
+  const token = useContext(TokenContext);
+
   const schema = yup
     .object({
       username: yup.string().required("This field is required to be filled").min(6, "At least 6 characters").max(25, "No more than 25 characters"),
@@ -24,7 +30,15 @@ export const FormSignIn = () => {
   });
 
   const onSubmit = (data) => {
-    alert(`${data.username}, welcome!`);
+    authApi.login(data.username, data.password).then(
+      () => {
+        token.token.setItem("token", "123");
+        token.setIsAuth(true);
+      },
+      (e) => {
+        alert(e);
+      }
+    );
   };
 
   return (
