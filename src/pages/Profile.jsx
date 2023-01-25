@@ -1,16 +1,15 @@
 import React, { useContext } from "react";
 
-import { TokenContext } from "../context/context";
+import { TokenContext } from "../context/TokenContext";
 
 export const Profile = () => {
   const token = useContext(TokenContext);
-  console.log(token.token.getItem("token"));
   return (
     <div>
       You are logined right now
       <button
         onClick={() => {
-          token.token.removeItem("token");
+          window.localStorage.removeItem("token");
           token.setIsAuth(false);
         }}
       >

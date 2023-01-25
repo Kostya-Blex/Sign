@@ -1,21 +1,20 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 
-import { TokenContext } from "../../context/context";
+import { TokenContext } from "../../context/TokenContext";
 import { Profile } from "../../pages/Profile";
 import { SignIn } from "../../pages/SignIn";
 import { SignUp } from "../../pages/SignUp";
 
 export const AppRouter = () => {
   const [isAuth, setIsAuth] = useState(false);
-  const token = window.localStorage;
 
   useEffect(() => {
-    token.getItem("token") ? setIsAuth(true) : setIsAuth(false);
-  }, [token]);
+    window.localStorage.getItem("token") ? setIsAuth(true) : setIsAuth(false);
+  }, []);
 
   return (
-    <TokenContext.Provider value={{ token, setIsAuth }}>
+    <TokenContext.Provider value={{ setIsAuth }}>
       <BrowserRouter>
         {!isAuth ? (
           <Routes>

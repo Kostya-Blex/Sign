@@ -1,24 +1,25 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
-import { AuthService } from "../../API.js";
+import { AuthService } from "../../API/API.js";
 import { FormInput } from "./FormInput/FormInput";
 import style from "./FormSign.module.css";
+import { TokenContext } from "../../context/TokenContext.js";
+
+const signUpSchema = yup
+  .object({
+    username: yup.string().required("This field is required to be filled").min(6, "At least 6 characters").max(25, "No more than 25 characters"),
+    name: yup.string().required("This field is required to be filled").min(6, "At least 6 characters").max(25, "No more than 25 characters"),
+    number: yup.string().required("This field is required to be filled").min(9, "At least 9 characters").max(15, "No more than 15 characters"),
+    password: yup.string().required("This field is required to be filled").min(6, "At least 6 characters").max(20, "No more than 20 characters"),
+  })
+  .required();
 
 export const FormSignUp = () => {
   const authApi = AuthService.getInstance();
-  console.log(authApi);
-
-  const schema = yup
-    .object({
-      username: yup.string().required("This field is required to be filled").min(6, "At least 6 characters").max(25, "No more than 25 characters"),
-      name: yup.string().required("This field is required to be filled").min(6, "At least 6 characters").max(25, "No more than 25 characters"),
-      number: yup.string().required("This field is required to be filled").min(9, "At least 9 characters").max(15, "No more than 15 characters"),
-      password: yup.string().required("This field is required to be filled").min(6, "At least 6 characters").max(20, "No more than 20 characters"),
-    })
-    .required();
+  const token = useContext(TokenContext);
 
   const {
     register,
@@ -26,13 +27,14 @@ export const FormSignUp = () => {
     handleSubmit,
   } = useForm({
     mode: "onBlur",
-    resolver: yupResolver(schema),
+    resolver: yupResolver(signUpSchema),
   });
 
   const onSubmit = (data) => {
     authApi.register(data.username, data.name, data.number, data.password).then(
-      () => {
-        alert("register was successfull");
+      (user) => {
+        window.localStorage.setItem("token", user.token);
+        token.setIsAuth(true);
       },
       (e) => {
         alert(e);
