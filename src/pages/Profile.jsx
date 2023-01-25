@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 
-import { TokenContext } from "../context/TokenContext";
+import { TokenContext } from "../context/TokenProvider";
 
 export const Profile = () => {
   const token = useContext(TokenContext);

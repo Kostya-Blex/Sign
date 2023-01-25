@@ -6,7 +6,7 @@ import * as yup from "yup";
 import { AuthService } from "../../API/API.js";
 import { FormInput } from "./FormInput/FormInput";
 import style from "./FormSign.module.css";
-import { TokenContext } from "../../context/TokenContext.js";
+import { TokenContext } from "../../context/TokenProvider.js";
 
 const signUpSchema = yup
   .object({

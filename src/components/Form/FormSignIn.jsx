@@ -5,7 +5,7 @@ import * as yup from "yup";
 
 import { FormInput } from "./FormInput/FormInput";
 import style from "./FormSign.module.css";
-import { TokenContext } from "../../context/TokenContext";
+import { TokenContext } from "../../context/TokenProvider";
 import { AuthService } from "../../API/API";
 
 const signInSchema = yup
