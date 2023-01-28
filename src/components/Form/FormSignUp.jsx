@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
@@ -6,7 +6,7 @@ import * as yup from "yup";
 import { AuthService } from "../../API/API.js";
 import { FormInput } from "./FormInput/FormInput";
 import style from "./FormSign.module.css";
-import { TokenContext } from "../../context/TokenProvider.js";
+import { useTokenContext } from "../../hooks/useTokenContext.js";
 
 const signUpSchema = yup
   .object({
@@ -19,7 +19,7 @@ const signUpSchema = yup
 
 export const FormSignUp = () => {
   const authApi = AuthService.getInstance();
-  const token = useContext(TokenContext);
+  const { setIsAuth } = useTokenContext();
 
   const {
     register,
@@ -34,7 +34,7 @@ export const FormSignUp = () => {
     authApi.register(data.username, data.name, data.number, data.password).then(
       (user) => {
         window.localStorage.setItem("token", user.token);
-        token.setIsAuth(true);
+        setIsAuth(true);
       },
       (e) => {
         alert(e);

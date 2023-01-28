@@ -1,12 +1,12 @@
-import React, { useContext } from "react";
+import React from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
 import { FormInput } from "./FormInput/FormInput";
 import style from "./FormSign.module.css";
-import { TokenContext } from "../../context/TokenProvider";
 import { AuthService } from "../../API/API";
+import { useTokenContext } from "../../hooks/useTokenContext";
 
 const signInSchema = yup
   .object({
@@ -17,7 +17,7 @@ const signInSchema = yup
 
 export const FormSignIn = () => {
   const authApi = AuthService.getInstance();
-  const token = useContext(TokenContext);
+  const { setIsAuth } = useTokenContext();
 
   const {
     register,
@@ -32,7 +32,7 @@ export const FormSignIn = () => {
     authApi.login(data.username, data.password).then(
       (user) => {
         window.localStorage.setItem("token", user.token);
-        token.setIsAuth(true);
+        setIsAuth(true);
       },
       (e) => {
         alert(e);

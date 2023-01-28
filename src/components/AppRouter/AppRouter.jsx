@@ -1,13 +1,13 @@
-import React, { useContext } from "react";
+import React from "react";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 
-import { TokenContext } from "../../context/TokenProvider";
 import { Profile } from "../../pages/Profile";
 import { SignIn } from "../../pages/SignIn";
 import { SignUp } from "../../pages/SignUp";
+import { useTokenContext } from "../../hooks/useTokenContext";
 
 export const AppRouter = () => {
-  const { isAuth } = useContext(TokenContext);
+  const { isAuth } = useTokenContext();
 
   return (
     <BrowserRouter>

@@ -1,16 +1,16 @@
-import React, { useContext } from "react";
+import React from "react";
 
-import { TokenContext } from "../context/TokenProvider";
+import { useTokenContext } from "../hooks/useTokenContext";
 
 export const Profile = () => {
-  const token = useContext(TokenContext);
+  const { setIsAuth } = useTokenContext();
   return (
     <div>
       You are logined right now
       <button
         onClick={() => {
           window.localStorage.removeItem("token");
-          token.setIsAuth(false);
+          setIsAuth(false);
         }}
       >
         Log out
